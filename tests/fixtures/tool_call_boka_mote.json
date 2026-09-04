@@ -1,0 +1,17 @@
+{
+  "message": {
+    "type": "tool-calls",
+    "toolCallList": [
+      {
+        "id": "call_def456",
+        "type": "function",
+        "function": {
+          "name": "boka_mote",
+          "arguments": "{\"tid_id\":\"2026-09-07T10:00\",\"namn\":\"Anna Berg\",\"telefon\":\"070-123 45 67\",\"arende\":\"Vill veta mer om UGL\"}"
+        }
+      }
+    ],
+    "call": { "id": "5f1a2b3c-0000-4444-8888-99887766aabb", "type": "inboundPhoneCall" },
+    "customer": { "number": "+46709998877" }
+  }
+}

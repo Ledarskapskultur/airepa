@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prata med Carl-Fredriks assistent</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --text: #1c1b1a;
+    --svag: #6b6763;
+    --kant: #e2ddd6;
+    --accent: #1f5c56;
+    --accent-mork: #17453f;
+    --rod: #a03b32;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+  }
+  .kort {
+    max-width: 440px;
+    margin: 40px auto;
+    padding: 28px 26px 24px;
+    border: 1px solid var(--kant);
+    border-radius: 14px;
+  }
+  h1 { font-size: 20px; margin: 0 0 6px; }
+  p.ingress { margin: 0 0 20px; color: var(--svag); font-size: 15px; }
+  button {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    background: var(--accent);
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  button:hover:not(:disabled) { background: var(--accent-mork); }
+  button:disabled { opacity: .55; cursor: default; }
+  button.aktiv { background: var(--rod); }
+  .status {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 16px;
+    font-size: 14px;
+    color: var(--svag);
+    min-height: 22px;
+  }
+  .prick {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--kant); flex: none;
+  }
+  .prick.lyssnar { background: var(--accent); animation: puls 1.4s ease-in-out infinite; }
+  .prick.talar { background: #c98a1e; animation: puls .7s ease-in-out infinite; }
+  @keyframes puls { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
+  .transkript {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--kant);
+    font-size: 14px;
+    max-height: 260px;
+    overflow-y: auto;
+  }
+  .transkript:empty { display: none; }
+  .rad { margin-bottom: 9px; }
+  .vem { font-weight: 600; color: var(--svag); font-size: 12px;
+         text-transform: uppercase; letter-spacing: .04em; }
+  .fel { color: var(--rod); }
+</style>
+</head>
+<body>
+  <div class="kort">
+    <h1>Prata med Carl-Fredriks assistent</h1>
+    <p class="ingress">
+      Assistenten kan boka in ett telefonmöte med Carl-Fredrik eller ta ett meddelande.
+      Din webbläsare frågar efter mikrofonen.
+    </p>
+
+    <button id="knapp" disabled>Laddar…</button>
+
+    <div class="status">
+      <span class="prick" id="prick"></span>
+      <span id="statustext">Inte uppkopplad</span>
+    </div>
+
+    <div class="transkript" id="transkript"></div>
+  </div>
+
+<script src="/config.js"></script>
+<script type="module">
+import Vapi from "https://cdn.jsdelivr.net/npm/@vapi-ai/web@2.3.8/+esm";
+
+const knapp = document.getElementById("knapp");
+const prick = document.getElementById("prick");
+const statustext = document.getElementById("statustext");
+const transkript = document.getElementById("transkript");
+
+const config = window.AIREPA_CONFIG || {};
+let vapi = null;
+let pagaende = false;
+
+function status(text, klass = "") {
+  statustext.textContent = text;
+  prick.className = "prick" + (klass ? " " + klass : "");
+}
+
+function radrubrik(roll) {
+  return roll === "assistant" ? "Assistenten" : "Du";
+}
+
+let sistaRad = null;
+let sistaRoll = null;
+
+function skrivTranskript(roll, text) {
+  if (roll !== sistaRoll) {
+    sistaRad = document.createElement("div");
+    sistaRad.className = "rad";
+    sistaRad.innerHTML = `<div class="vem"></div><div class="text"></div>`;
+    sistaRad.querySelector(".vem").textContent = radrubrik(roll);
+    transkript.appendChild(sistaRad);
+    sistaRoll = roll;
+  }
+  sistaRad.querySelector(".text").textContent = text;
+  transkript.scrollTop = transkript.scrollHeight;
+}
+
+if (!config.publicKey || !config.assistantId) {
+  status("Konfiguration saknas: publik nyckel eller assistent-id.", "");
+  statustext.classList.add("fel");
+} else {
+  vapi = new Vapi(config.publicKey);
+  knapp.disabled = false;
+  knapp.textContent = "Prata med assistenten";
+
+  vapi.on("call-start", () => {
+    pagaende = true;
+    knapp.textContent = "Avsluta samtalet";
+    knapp.classList.add("aktiv");
+    knapp.disabled = false;
+    status("Uppkopplad – assistenten lyssnar", "lyssnar");
+  });
+
+  vapi.on("call-end", () => {
+    pagaende = false;
+    knapp.textContent = "Prata med assistenten";
+    knapp.classList.remove("aktiv");
+    knapp.disabled = false;
+    status("Samtalet är avslutat");
+    sistaRoll = null;
+  });
+
+  vapi.on("speech-start", () => status("Assistenten talar", "talar"));
+  vapi.on("speech-end", () => status("Assistenten lyssnar", "lyssnar"));
+
+  vapi.on("message", (msg) => {
+    if (msg.type === "transcript" && msg.transcript) {
+      skrivTranskript(msg.role, msg.transcript);
+    }
+  });
+
+  vapi.on("error", (fel) => {
+    console.error(fel);
+    pagaende = false;
+    knapp.textContent = "Prata med assistenten";
+    knapp.classList.remove("aktiv");
+    knapp.disabled = false;
+    status("Något gick fel. Försök igen.");
+    statustext.classList.add("fel");
+  });
+
+  knapp.addEventListener("click", async () => {
+    statustext.classList.remove("fel");
+    if (pagaende) {
+      vapi.stop();
+      return;
+    }
+    knapp.disabled = true;
+    status("Kopplar upp…");
+    try {
+      await vapi.start(config.assistantId);
+    } catch (fel) {
+      console.error(fel);
+      knapp.disabled = false;
+      status("Kunde inte starta samtalet. Kontrollera mikrofonen.");
+      statustext.classList.add("fel");
+    }
+  });
+}
+</script>
+</body>
+</html>

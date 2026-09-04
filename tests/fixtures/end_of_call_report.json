@@ -1,0 +1,16 @@
+{
+  "message": {
+    "type": "end-of-call-report",
+    "endedReason": "customer-ended-call",
+    "startedAt": "2026-09-04T10:00:00.000Z",
+    "endedAt": "2026-09-04T10:02:35.000Z",
+    "durationSeconds": 155,
+    "summary": "Uppringaren bokade ett telefonmöte på måndag klockan 10.",
+    "transcript": "AI: Hej, du har nått Carl-Fredriks AI-assistent...\nUser: Jag skulle vilja boka en tid.",
+    "call": { "id": "5f1a2b3c-0000-4444-8888-99887766aabb", "type": "inboundPhoneCall" },
+    "customer": { "number": "+46709998877" },
+    "artifact": {
+      "transcript": "AI: Hej, du har nått Carl-Fredriks AI-assistent...\nUser: Jag skulle vilja boka en tid."
+    }
+  }
+}

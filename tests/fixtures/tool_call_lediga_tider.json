@@ -1,0 +1,23 @@
+{
+  "message": {
+    "timestamp": 1789000000000,
+    "type": "tool-calls",
+    "toolCallList": [
+      {
+        "id": "call_abc123",
+        "type": "function",
+        "function": {
+          "name": "hamta_lediga_tider",
+          "arguments": { "onskad_period": "i nästa vecka" }
+        }
+      }
+    ],
+    "call": {
+      "id": "5f1a2b3c-0000-4444-8888-99887766aabb",
+      "orgId": "org_1",
+      "type": "webCall"
+    },
+    "customer": { "number": "+46709998877" },
+    "assistant": { "id": "asst_1" }
+  }
+}

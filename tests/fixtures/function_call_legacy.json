@@ -1,0 +1,15 @@
+{
+  "message": {
+    "type": "function-call",
+    "functionCall": {
+      "name": "skicka_meddelande",
+      "parameters": {
+        "namn": "Erik Lund",
+        "telefon": "0701234567",
+        "arende": "Undrar över en offert.",
+        "bradskande": true
+      }
+    },
+    "call": { "id": "legacy-call-1" }
+  }
+}

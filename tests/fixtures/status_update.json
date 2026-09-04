@@ -1,0 +1,7 @@
+{
+  "message": {
+    "type": "status-update",
+    "status": "in-progress",
+    "call": { "id": "5f1a2b3c-0000-4444-8888-99887766aabb" }
+  }
+}
