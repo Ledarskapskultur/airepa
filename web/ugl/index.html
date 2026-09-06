@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UGL: hitta ditt eget ledarskap | Ledarskapskultur</title>
+<meta name="description" content="UGL, Utveckling av Grupp och Ledare. Fem dagar som ger dig en bild av dig själv som du inte kan få på jobbet. För dig som leder människor, med eller utan chefstitel.">
+<link rel="canonical" href="https://ledarskapskultur.se/ugl/">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="sv_SE">
+<meta property="og:title" content="UGL: hitta ditt eget ledarskap">
+<meta property="og:description" content="Fem dagar som ger dig en bild av dig själv som du inte kan få på jobbet.">
+<meta property="og:url" content="https://ledarskapskultur.se/ugl/">
+<meta name="theme-color" content="#013E37">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,400;1,500&family=Poppins:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ── Ledarskapskulturs designtokens (varumärkesguide v1.0) ───────────── */
+:root{
+  --petrol:#013E37;
+  --petrol-light:#2C4A52;
+  --petrol-tint:#E7EDEC;
+  --gold:#FFEFB3;
+  --coral:#E08075;
+  --ochre:#B9843C;
+  --terracotta:#C2562E;
+  --sage:#6E7F5C;
+  --ink:#1F2A37;
+  --ink2:#5A5348;
+  --paper:#FDF9F0;
+  --hair:#E5DFCE;
+
+  --serif:'Lora', Georgia, serif;
+  --sans:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --label:'Poppins', 'Inter', sans-serif;
+
+  --sida:1220px;
+  --gutter:clamp(20px, 5vw, 72px);
+  --luft:clamp(72px, 11vw, 148px);
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+@media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:clamp(17px, 1.05vw, 18px);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img{ max-width:100%; display:block; }
+
+h1,h2,h3,blockquote{ font-family:var(--serif); font-weight:600; color:var(--petrol); }
+h1{ font-size:clamp(3rem, 6.4vw, 5.8rem); line-height:.96; letter-spacing:-.025em; margin:0; max-width:11ch; }
+h2{ font-size:clamp(2rem, 3.9vw, 3.1rem); line-height:1.1; letter-spacing:-.015em; margin:0 0 .6em; }
+h3{ font-size:clamp(1.15rem, 1.6vw, 1.4rem); line-height:1.25; margin:0 0 .5em; }
+p{ margin:0 0 1.1em; }
+p:last-child{ margin-bottom:0; }
+a{ color:inherit; }
+
+.wrap{ max-width:var(--sida); margin:0 auto; padding-inline:var(--gutter); }
+
+/* Etikett/kicker: Poppins versaler, spärrat. Sparsamt. */
+.kicker{
+  font-family:var(--label); font-weight:600; font-size:.72rem;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--ochre);
+  margin:0 0 1.1rem;
+}
+.kicker.pa-morkt{ color:var(--gold); }
+.kicker .nr{ color:var(--ink2); margin-right:.9em; }
+.kicker.pa-morkt .nr{ color:rgba(255,239,179,.55); }
+
+/* Sessionstema: exakt tre ord, konkret → abstrakt, under kickern. */
+.tema{ display:flex; flex-wrap:wrap; align-items:center; gap:.7rem; margin:0 0 2.4rem; }
+.tema .ord{
+  font-family:var(--label); font-weight:600; font-size:.8rem;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--terracotta);
+}
+.tema .pil{ color:var(--ink2); }
+.tema.pa-morkt .ord{ color:var(--gold); }
+.tema.pa-morkt .pil{ color:rgba(255,239,179,.5); }
+
+/* ── Knappar. Max en knappfärg per vy. ───────────────────────────────── */
+.knapp{
+  display:inline-flex; align-items:center; gap:.6rem;
+  font-family:var(--label); font-weight:600; font-size:.82rem;
+  letter-spacing:.09em; text-transform:uppercase; text-decoration:none;
+  padding:1.05rem 1.9rem; border-radius:2px; border:1px solid transparent;
+  transition:transform .18s ease, background-color .18s ease, color .18s ease;
+}
+.knapp:hover{ transform:translateY(-2px); }
+.knapp--guld{ background:var(--gold); color:var(--petrol); }
+.knapp--guld:hover{ background:#fff6d2; }
+.knapp--linje{ border-color:rgba(253,249,240,.35); color:var(--paper); }
+.knapp--linje:hover{ border-color:var(--gold); color:var(--gold); }
+
+/* Textlänk med pil, används i de ljusa sektionerna i stället för knapp. */
+.lank{
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-family:var(--label); font-weight:600; font-size:.78rem;
+  letter-spacing:.1em; text-transform:uppercase;
+  color:var(--terracotta); text-decoration:none;
+  border-bottom:1px solid rgba(194,86,46,.35); padding-bottom:.25rem;
+}
+.lank:hover{ border-bottom-color:var(--terracotta); }
+.lank .pil{ transition:transform .18s ease; }
+.lank:hover .pil{ transform:translateX(4px); }
+
+:focus-visible{ outline:2px solid var(--terracotta); outline-offset:3px; border-radius:2px; }
+.hoppa{
+  position:absolute; left:-9999px; top:0; z-index:100;
+  background:var(--gold); color:var(--petrol); padding:1rem 1.5rem;
+}
+.hoppa:focus{ left:0; }
+
+/* ── Toppmeny ────────────────────────────────────────────────────────── */
+.topp{
+  position:fixed; inset:0 0 auto; z-index:50;
+  padding-block:1.15rem;
+  transition:background-color .3s ease, box-shadow .3s ease, padding .3s ease;
+}
+.topp.fast{ background:var(--paper); box-shadow:0 1px 0 var(--hair); padding-block:.75rem; }
+.topp .rad{ display:flex; align-items:center; justify-content:space-between; gap:2rem; }
+.ordmarke{
+  font-family:var(--serif); font-weight:600; font-size:1.12rem; letter-spacing:-.01em;
+  color:var(--paper); text-decoration:none; white-space:nowrap;
+}
+.topp.fast .ordmarke{ color:var(--petrol); }
+.meny{ display:flex; align-items:center; gap:2.2rem; }
+.meny a{
+  font-family:var(--label); font-weight:500; font-size:.76rem;
+  letter-spacing:.1em; text-transform:uppercase;
+  color:rgba(253,249,240,.8); text-decoration:none;
+}
+.meny a:hover{ color:var(--gold); }
+.topp.fast .meny a{ color:var(--ink2); }
+.topp.fast .meny a:hover{ color:var(--terracotta); }
+@media (max-width: 860px){ .meny{ display:none; } }
+
+/* ── Hero: petrol som huvudyta, guld som ljuspunkt ───────────────────── */
+.hero{
+  position:relative; overflow:hidden;
+  background:var(--petrol); color:var(--paper);
+  padding-top:clamp(112px, 16vh, 200px); padding-bottom:clamp(56px, 8vh, 100px);
+  min-height:min(94svh, 900px);
+  display:flex; align-items:center;
+}
+.hero .wrap{ width:100%; position:relative; z-index:2; }
+.hero h1{ color:var(--paper); }
+.hero h1 em{ font-style:normal; color:var(--gold); }
+
+.hero-grid{ display:grid; grid-template-columns:minmax(0,1fr); gap:clamp(2.5rem,5vw,4.5rem); }
+@media (max-width: 899px){
+  /* I mobil kommer rubriken först, ingressen efter. */
+  .hero-intro, .hero-text{ display:contents; }
+  .hero-grid{ gap:0; }
+  .hero-grid .kicker{ order:1; margin-bottom:1rem; }
+  .hero-grid .tema{ order:2; margin-bottom:2rem; }
+  .hero-grid h1{ order:3; margin-bottom:1.8rem; }
+  .hero-intro p{ order:4; max-width:38ch; }
+  .hero-knappar{ order:5; }
+}
+@media (min-width: 900px){
+  .hero-grid{ grid-template-columns:minmax(230px, 290px) minmax(0,1fr); align-items:start; }
+  .hero-text{ max-width:min(100%, 640px); }
+}
+.hero-intro p{ font-size:.98rem; line-height:1.7; color:rgba(253,249,240,.78); max-width:34ch; }
+
+.hero-cirkel{
+  position:absolute; z-index:1; border-radius:50%;
+  background:var(--gold);
+  width:clamp(260px, 28vw, 430px); aspect-ratio:1;
+  right:clamp(-150px, -6vw, -60px); top:50%; transform:translateY(-52%);
+  pointer-events:none;
+}
+@media (max-width: 1099px){
+  .hero-cirkel{ width:clamp(240px, 34vw, 340px); right:-120px; }
+}
+@media (max-width: 899px){
+  /* I mobil blir cirkeln en dämpad ton, så texten ovanpå alltid är läsbar. */
+  .hero-cirkel{ width:clamp(260px, 74vw, 400px); right:-22%; top:auto; bottom:-16%; transform:none; opacity:.26; }
+}
+
+.hero-fot{
+  display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between;
+  gap:1rem 2rem; margin-top:clamp(2.8rem, 6vw, 4.5rem);
+  padding-top:1.5rem; border-top:1px solid rgba(253,249,240,.16);
+  font-family:var(--label); font-size:.74rem; font-weight:500;
+  letter-spacing:.1em; text-transform:uppercase; color:rgba(253,249,240,.7);
+}
+.hero-fot strong{ color:var(--gold); font-weight:600; }
+.hero-knappar{ display:flex; flex-wrap:wrap; gap:.9rem; margin-top:2.4rem; }
+
+/* ── Sektioner ───────────────────────────────────────────────────────── */
+section{ padding-block:var(--luft); }
+.linje{ border:0; border-top:1px solid var(--hair); margin:0; }
+
+.blytext{
+  font-family:var(--serif); font-size:clamp(1.35rem, 2.5vw, 1.95rem);
+  line-height:1.42; color:var(--petrol); max-width:24ch;
+}
+.brodkol{ max-width:56ch; color:var(--ink); }
+.tva-kol{ display:grid; gap:clamp(2rem, 5vw, 5rem); grid-template-columns:minmax(0,1fr); }
+@media (min-width: 900px){ .tva-kol{ grid-template-columns:minmax(0,.85fr) minmax(0,1fr); } }
+
+/* Nyckeltal */
+.tal{ display:grid; gap:2rem 1.5rem; grid-template-columns:repeat(2, minmax(0,1fr)); margin-top:clamp(3rem,6vw,4.5rem); }
+@media (min-width: 780px){ .tal{ grid-template-columns:repeat(4, minmax(0,1fr)); } }
+.tal .siffra{ font-family:var(--serif); font-size:clamp(2.4rem,4.5vw,3.4rem); line-height:1; color:var(--petrol); }
+.tal .txt{ font-size:.92rem; color:var(--ink2); margin-top:.7rem; max-width:22ch; }
+.tal > div{ border-top:1.5px solid var(--ochre); padding-top:1.1rem; }
+
+/* Vinstblock */
+.vinster{ display:grid; gap:clamp(2.2rem,4vw,3.5rem); grid-template-columns:minmax(0,1fr); margin-top:clamp(2.5rem,5vw,4rem); }
+@media (min-width: 820px){ .vinster{ grid-template-columns:repeat(3, minmax(0,1fr)); } }
+.vinst .nr{
+  font-family:var(--label); font-size:.72rem; font-weight:600; letter-spacing:.14em;
+  color:var(--terracotta); display:block; margin-bottom:1.1rem;
+}
+.vinst p{ color:var(--ink2); font-size:.98rem; }
+
+/* Veckans rytm */
+.rytm{ margin-top:clamp(2.5rem,5vw,3.5rem); border-top:1px solid var(--hair); }
+.rytm .dag{
+  display:grid; gap:.6rem 2.5rem; grid-template-columns:minmax(0,1fr);
+  padding-block:1.9rem; border-bottom:1px solid var(--hair);
+}
+@media (min-width: 780px){
+  .rytm .dag{ grid-template-columns:120px minmax(0,1.1fr) minmax(0,1.4fr); align-items:baseline; }
+}
+.rytm .etikett{
+  font-family:var(--label); font-weight:600; font-size:.72rem;
+  letter-spacing:.13em; text-transform:uppercase; color:var(--ochre);
+}
+.rytm h3{ margin:0; }
+.rytm p{ color:var(--ink2); font-size:.98rem; margin:0; }
+.rytm .not{ margin-top:1.6rem; font-size:.9rem; color:var(--ink2); font-style:italic; font-family:var(--serif); }
+
+/* Citat */
+.citat{ background:var(--petrol-tint); }
+.citat blockquote{
+  margin:0; font-style:italic; font-weight:500;
+  font-size:clamp(1.4rem, 2.9vw, 2.2rem); line-height:1.38; max-width:22ch;
+}
+.citat .vem{
+  font-family:var(--label); font-weight:500; font-size:.74rem;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--ink2); margin-top:1.8rem;
+}
+.citat-grid{ display:grid; gap:clamp(2.5rem,5vw,4rem); grid-template-columns:minmax(0,1fr); }
+@media (min-width: 900px){ .citat-grid{ grid-template-columns:repeat(2, minmax(0,1fr)); } }
+
+/* Vem passar */
+.passar{ display:grid; gap:0; grid-template-columns:minmax(0,1fr); margin-top:clamp(2rem,4vw,3rem); }
+@media (min-width: 700px){ .passar{ grid-template-columns:repeat(2, minmax(0,1fr)); column-gap:clamp(2rem,5vw,4rem); } }
+.passar div{ padding-block:1.35rem; border-bottom:1px solid var(--hair); }
+.passar strong{ font-weight:600; color:var(--petrol); display:block; }
+.passar span{ color:var(--ink2); font-size:.95rem; }
+
+/* Datum */
+.datum{ margin-top:clamp(2.2rem,5vw,3.2rem); border-top:1.5px solid var(--petrol); }
+.datum-rad{
+  display:grid; gap:.4rem 2rem; grid-template-columns:minmax(0,1fr);
+  padding-block:1.6rem; border-bottom:1px solid var(--hair); align-items:center;
+}
+@media (min-width: 780px){
+  .datum-rad{ grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) 130px auto; }
+  .datum-rad .status{ text-align:right; }
+}
+.datum-rad .nar{ font-family:var(--serif); font-size:1.2rem; color:var(--petrol); }
+.datum-rad .var{ color:var(--ink2); font-size:.95rem; }
+.datum-rad .lank{ justify-self:start; }
+.datum-rad .status{
+  font-family:var(--label); font-weight:600; font-size:.68rem;
+  letter-spacing:.11em; text-transform:uppercase; color:var(--sage);
+}
+.datum-rad .status.fatal{ color:var(--terracotta); }
+.datum-not{ margin-top:1.6rem; font-size:.92rem; color:var(--ink2); }
+
+/* Frågor */
+.fragor{ margin-top:clamp(2rem,4vw,3rem); border-top:1px solid var(--hair); max-width:78ch; }
+details{ border-bottom:1px solid var(--hair); }
+summary{
+  cursor:pointer; list-style:none; padding-block:1.5rem;
+  font-family:var(--serif); font-weight:600; font-size:clamp(1.05rem,1.6vw,1.25rem);
+  color:var(--petrol); display:flex; justify-content:space-between; align-items:center; gap:2rem;
+}
+summary::-webkit-details-marker{ display:none; }
+summary::after{
+  content:'+'; font-family:var(--sans); font-weight:400; font-size:1.5rem;
+  color:var(--terracotta); line-height:1; transition:transform .2s ease;
+}
+details[open] summary::after{ content:'–'; }
+details .svar{ padding:0 0 1.7rem; color:var(--ink2); font-size:.99rem; max-width:64ch; }
+
+/* Avslutande CTA */
+.avslut{ background:var(--petrol); color:var(--paper); position:relative; overflow:hidden; }
+.avslut h2{ color:var(--paper); max-width:16ch; }
+.avslut p{ color:rgba(253,249,240,.78); max-width:48ch; }
+.avslut .wrap{ position:relative; z-index:2; }
+.avslut .cirkel{
+  position:absolute; z-index:1; border-radius:50%; background:var(--gold); opacity:.12;
+  width:clamp(300px,38vw,500px); aspect-ratio:1; right:-9%; top:-42%; pointer-events:none;
+}
+.avslut .knappar{ display:flex; flex-wrap:wrap; gap:.9rem; margin-top:2.4rem; }
+
+/* Sidfot */
+footer{ background:var(--petrol); color:rgba(253,249,240,.65); padding-block:2.5rem; font-size:.85rem; border-top:1px solid rgba(255,239,179,.14); }
+footer .rad{ display:flex; flex-wrap:wrap; gap:.8rem 2rem; justify-content:space-between; align-items:center; }
+footer a{ color:rgba(253,249,240,.65); text-decoration:none; }
+footer a:hover{ color:var(--gold); }
+
+/* Fast CTA-list i mobil */
+.mobilcta{
+  position:fixed; inset:auto 0 0; z-index:40; display:none;
+  transform:translateY(110%); transition:transform .3s ease;
+  background:var(--petrol); padding:.7rem var(--gutter) calc(.7rem + env(safe-area-inset-bottom));
+  border-top:1px solid rgba(255,239,179,.2);
+}
+.mobilcta .knapp{ width:100%; justify-content:center; padding-block:.95rem; }
+@media (max-width: 860px){ .mobilcta{ display:block; } .mobilcta.syns{ transform:none; } body.har-cta{ padding-bottom:84px; } }
+
+/* Diskret rörelse, alltid avstängbar */
+.in{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+.in.syns{ opacity:1; transform:none; }
+@media (prefers-reduced-motion: reduce){
+  .in{ opacity:1; transform:none; transition:none; }
+  .mobilcta{ transition:none; }
+  .knapp:hover, .lank:hover .pil{ transform:none; }
+}
+</style>
+</head>
+<body>
+<a class="hoppa" href="#innehall">Hoppa till innehållet</a>
+
+<header class="topp" id="topp">
+  <div class="wrap rad">
+    <a class="ordmarke" href="/">Ledarskapskultur</a>
+    <nav class="meny" aria-label="Huvudmeny">
+      <a href="#vad">Vad är UGL</a>
+      <a href="#veckan">Veckan</a>
+      <a href="#vem">För vem</a>
+      <a href="#datum">Datum</a>
+      <a href="#fragor">Frågor</a>
+    </nav>
+  </div>
+</header>
+
+<main id="innehall">
+
+  <!-- ── Hero ───────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-cirkel" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-intro">
+          <p class="kicker pa-morkt">UGL · Utveckling av Grupp och Ledare</p>
+          <div class="tema pa-morkt">
+            <span class="ord">Samspel</span><span class="pil" aria-hidden="true">→</span>
+            <span class="ord">Insikt</span><span class="pil" aria-hidden="true">→</span>
+            <span class="ord">Ledarskap</span>
+          </div>
+          <p>
+            Fem dagar tillsammans med människor du aldrig har träffat, som ger dig
+            en bild av dig själv som ingen medarbetarenkät kan ge. Du får se hur du
+            faktiskt verkar på andra, och vad du vill göra med det.
+          </p>
+        </div>
+
+        <div class="hero-text">
+          <h1>Hitta<br>ditt <em>eget</em><br>ledarskap.</h1>
+          <div class="hero-knappar">
+            <a class="knapp knapp--guld" href="#datum">Se kursdatum <span aria-hidden="true">→</span></a>
+            <a class="knapp knapp--linje" href="#kontakt">Prata med mig först</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-fot">
+        <span>5 dagar internat · 8 till 12 deltagare · 2 certifierade handledare</span>
+        <!-- FYLL I: nästa kursstart -->
+        <span>Nästa kurs: <strong>vecka 12, 2026</strong></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Vad är UGL ──────────────────────────────────────────────────── -->
+  <section id="vad">
+    <div class="wrap">
+      <p class="kicker in"><span class="nr">01</span>Vad det är</p>
+      <div class="tva-kol">
+        <p class="blytext in">Den mest beprövade ledarskapsutbildningen i Sverige, och den enda som lär ut med gruppen själv som lärobok.</p>
+        <div class="brodkol in">
+          <p>
+            UGL är utvecklat av Försvarshögskolan och har gått i drygt fyrtio år, i
+            ständigt omarbetade versioner. Grunden är enkel och obekväm: du lär dig
+            mer om ditt ledarskap på fem dagar i en grupp främlingar än på fem år av
+            kurser där någon står längst fram och berättar hur det borde vara.
+          </p>
+          <p>
+            Kursen bygger på forskning om hur grupper faktiskt utvecklas (Susan Wheelan),
+            hur behovet av tillhörighet, inflytande och närhet styr oss (Will Schutz FIRO)
+            och vad som kännetecknar ett ledarskap som får människor att växa
+            (Utvecklande ledarskap, Försvarshögskolan). Men teorin kommer efter
+            upplevelsen, aldrig före.
+          </p>
+          <p>
+            Vi är två certifierade handledare i rummet. Vi håller ramarna, ställer
+            frågorna och ser till att det är tryggt nog att vara ärlig. Resten gör
+            gruppen.
+          </p>
+        </div>
+      </div>
+
+      <div class="tal">
+        <div class="in"><div class="siffra">5</div><p class="txt">dagar internat, måndag till fredag, utan avbrott för jobbet</p></div>
+        <div class="in"><div class="siffra">8–12</div><p class="txt">deltagare, ingen från din egen organisation</p></div>
+        <div class="in"><div class="siffra">2</div><p class="txt">certifierade handledare, hela veckan</p></div>
+        <div class="in"><div class="siffra">40+</div><p class="txt">år av utveckling och forskning bakom upplägget</p></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="linje">
+
+  <!-- ── Vad du får ut ───────────────────────────────────────────────── -->
+  <section id="vinst">
+    <div class="wrap">
+      <p class="kicker in"><span class="nr">02</span>Vad du tar med dig</p>
+      <h2 class="in">En vecka som betalar tillbaka i varje möte du leder efteråt.</h2>
+      <div class="vinster">
+        <div class="vinst in">
+          <span class="nr">01</span>
+          <h3>Du ser dig själv genom andras ögon</h3>
+          <p>
+            Feedback som inte är ett halvårssamtal, utan människor som säger vad de
+            ser, medan det händer. De flesta blir förvånade. Inte alltid negativt
+            förvånade: många upptäcker en styrka de har slutat räkna med.
+          </p>
+        </div>
+        <div class="vinst in">
+          <span class="nr">02</span>
+          <h3>Du förstår vad som händer i en grupp</h3>
+          <p>
+            Varför nya team är artiga och ineffektiva, varför det gnisslar precis
+            innan det lossnar, och varför en grupp aldrig blir effektiv genom att
+            undvika konflikter. När du känner igen faserna kan du leda genom dem
+            i stället för att ta dem personligt.
+          </p>
+        </div>
+        <div class="vinst in">
+          <span class="nr">03</span>
+          <h3>Du får ett ledarskap som är ditt eget</h3>
+          <p>
+            Ingen mall att härma. Du prövar dig själv i skarpt läge, ser vad som
+            fungerar när du är du, och åker hem med några få saker du faktiskt
+            tänker göra annorlunda på måndag.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Investeringen ───────────────────────────────────────────────── -->
+  <section class="citat">
+    <div class="wrap">
+      <div class="citat-grid">
+        <div class="in">
+          <p class="kicker"><span class="nr">03</span>Investeringen</p>
+          <blockquote>En vecka är mycket. Det är också hela poängen.</blockquote>
+          <p class="vem">Om tiden det tar</p>
+        </div>
+        <div class="brodkol in">
+          <p>
+            Det finns en anledning till att UGL är fem dagar och inte en eftermiddag.
+            De första dagarna är artiga. Det som är värt att lära sig kommer när
+            gruppen har varit tillsammans tillräckligt länge för att sluta spela roll,
+            och det går inte att skynda fram.
+          </p>
+          <p>
+            Räkna med det som en investering med två avkastningar. Den ena är din
+            egen: du vet mer om varför du reagerar som du gör, i möten, i konflikter,
+            när du blir ifrågasatt. Den andra är organisationens: chefer som förstår
+            gruppdynamik slösar mindre tid på friktion som ingen sätter ord på.
+          </p>
+          <p>
+            Många deltagare beskriver veckan som den första på flera år där de fick
+            tänka på hur de leder, i stället för att bara hinna med.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Veckans rytm ────────────────────────────────────────────────── -->
+  <section id="veckan">
+    <div class="wrap">
+      <p class="kicker in"><span class="nr">04</span>Så rör sig veckan</p>
+      <h2 class="in">Fem dagar, en rörelse.</h2>
+      <p class="brodkol in">
+        Programmet är detsamma i hela Sverige, men två kurser är aldrig lika. Gruppen
+        avgör tempot. Så här brukar veckan röra sig.
+      </p>
+
+      <div class="rytm">
+        <div class="dag in">
+          <div class="etikett">Dag 1</div>
+          <h3>Att komma in i en ny grupp</h3>
+          <p>Främlingar, nya ramar, och den där bekanta frågan: hör jag hemma här? Ni sätter era egna spelregler för veckan.</p>
+        </div>
+        <div class="dag in">
+          <div class="etikett">Dag 2</div>
+          <h3>När olikheterna märks</h3>
+          <p>Vem tar plats, vem väntar, vem tar över när det blir otydligt. Gruppen börjar arbeta, och positionerna blir synliga.</p>
+        </div>
+        <div class="dag in">
+          <div class="etikett">Dag 3</div>
+          <h3>Feedback, på riktigt</h3>
+          <p>Att säga det du ser utan att såga någon, och att ta emot utan att försvara dig. Den färdighet flest tar med sig hem.</p>
+        </div>
+        <div class="dag in">
+          <div class="etikett">Dag 4</div>
+          <h3>Känslor och konflikter som resurs</h3>
+          <p>Det gruppen har undvikit kommer upp. Här upptäcker de flesta att en konflikt som hanteras gör gruppen starkare, inte svagare.</p>
+        </div>
+        <div class="dag in">
+          <div class="etikett">Dag 5</div>
+          <h3>Ditt ledarskap härifrån</h3>
+          <p>Vad du gör med det här på måndag. Konkret, i din vardag, med din grupp. Du åker inte hem med anteckningar, du åker hem med en riktning.</p>
+        </div>
+      </div>
+      <p class="not in">Vi går igenom teorin efter övningarna, aldrig i stället för dem.</p>
+    </div>
+  </section>
+
+  <hr class="linje">
+
+  <!-- ── För vem ─────────────────────────────────────────────────────── -->
+  <section id="vem">
+    <div class="wrap">
+      <p class="kicker in"><span class="nr">05</span>För vem</p>
+      <div class="tva-kol">
+        <p class="blytext in">Du behöver inte vara chef. Du behöver ha människor omkring dig.</p>
+        <div class="in">
+          <div class="passar">
+            <div><strong>Ny som chef</strong><span>Du har fått uppdraget, och undrar vad du gör med det.</span></div>
+            <div><strong>Erfaren chef</strong><span>Du kan jobbet. Frågan är vad ditt sätt gör med människorna runt dig.</span></div>
+            <div><strong>Projekt- eller teamledare</strong><span>Du leder utan mandat och behöver något annat än befogenheter.</span></div>
+            <div><strong>Specialist med inflytande</strong><span>Ingen titel, men det du säger styr riktningen.</span></div>
+            <div><strong>HR och verksamhetsutvecklare</strong><span>Du bygger kultur åt andra, och behöver förstå den inifrån.</span></div>
+            <div><strong>Du som står inför något nytt</strong><span>Ett skifte i karriären, ett större uppdrag, ett vägval.</span></div>
+          </div>
+          <p style="margin-top:1.8rem; font-size:.95rem; color:var(--ink2);">
+            En sak är viktig: du går aldrig UGL tillsammans med din chef, din
+            medarbetare eller en nära kollega. Hela poängen är att gruppen är ny,
+            och att ingenting du säger följer med tillbaka till jobbet.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Röster (byt ut mot riktiga citat) ───────────────────────────── -->
+  <section class="citat">
+    <div class="wrap">
+      <p class="kicker in"><span class="nr">06</span>Röster från kurser</p>
+      <div class="citat-grid">
+        <!-- FYLL I: ersätt med riktiga, godkända deltagarcitat. Förnamn, roll och bransch räcker. -->
+        <div class="in">
+          <blockquote>Jag trodde jag skulle lära mig leda andra. Jag lärde mig framför allt vad jag själv gör när det blir obekvämt.</blockquote>
+          <p class="vem">Deltagare, enhetschef inom vården</p>
+        </div>
+        <div class="in">
+          <blockquote>Fem dagar borta från jobbet kändes omöjligt i januari. I mars var det den enskilt bästa veckan på hela året.</blockquote>
+          <p class="vem">Deltagare, projektledare i industrin</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Datum och pris ──────────────────────────────────────────────── -->
+  <section id="datum">
+    <div class="wrap">
+      <p class="kicker in"><span class="nr">07</span>Datum och pris</p>
+      <h2 class="in">Kommande kurser.</h2>
+      <p class="brodkol in">
+        Kursen går som internat, måndag morgon till fredag eftermiddag. Priset
+        inkluderar kursledning, material, kost och logi.
+      </p>
+
+      <!-- FYLL I: riktiga datum, orter, priser och platsstatus -->
+      <div class="datum">
+        <div class="datum-rad in">
+          <span class="nar">16 till 20 mars 2026</span>
+          <span class="var">Kursgård, Mälardalen</span>
+          <span class="status">Platser kvar</span>
+          <a class="lank" href="#kontakt">Anmäl intresse <span class="pil" aria-hidden="true">→</span></a>
+        </div>
+        <div class="datum-rad in">
+          <span class="nar">11 till 15 maj 2026</span>
+          <span class="var">Kursgård, Mälardalen</span>
+          <span class="status fatal">Få platser</span>
+          <a class="lank" href="#kontakt">Anmäl intresse <span class="pil" aria-hidden="true">→</span></a>
+        </div>
+        <div class="datum-rad in">
+          <span class="nar">21 till 25 september 2026</span>
+          <span class="var">Kursgård, Mälardalen</span>
+          <span class="status">Platser kvar</span>
+          <a class="lank" href="#kontakt">Anmäl intresse <span class="pil" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <p class="datum-not in">
+        Pris: <strong>00 000 kr</strong> exklusive moms per deltagare.
+        Behöver ni köra en egen kurs för flera personer, eller ett annat datum?
+        Hör av dig, vi lägger upp den.
+      </p>
+    </div>
+  </section>
+
+  <hr class="linje">
+
+  <!-- ── Vanliga frågor ──────────────────────────────────────────────── -->
+  <section id="fragor">
+    <div class="wrap">
+      <p class="kicker in"><span class="nr">08</span>Vanliga frågor</p>
+      <h2 class="in">Det de flesta undrar.</h2>
+
+      <div class="fragor in">
+        <details>
+          <summary>Måste jag vara chef för att gå UGL?</summary>
+          <div class="svar">
+            Nej. UGL handlar om ledarskap i vid mening, alltså hur du påverkar andra
+            och blir påverkad. Projektledare, specialister, HR och blivande chefer går
+            kursen med lika stor behållning som chefer med personalansvar.
+          </div>
+        </details>
+        <details>
+          <summary>Är det terapi?</summary>
+          <div class="svar">
+            Nej. Det är en utbildning med arbetslivet som ram. Det blir personligt,
+            eftersom ledarskap är personligt, men vi arbetar med det som sker i
+            gruppen här och nu, inte med din historia. Du bestämmer själv hela
+            veckan vad du delar med dig av.
+          </div>
+        </details>
+        <details>
+          <summary>Vad krävs av mig?</summary>
+          <div class="svar">
+            Att du är på plats hela veckan, och att du är nyfiken på vad andra ser
+            hos dig. Ingen förberedelse, inga förkunskaper, ingen läsning innan.
+            Kvällarna ingår i programmet, så räkna med att vara borta hemifrån.
+          </div>
+        </details>
+        <details>
+          <summary>Vad händer om jag känner någon i gruppen?</summary>
+          <div class="svar">
+            Säg till oss i förväg, så bokar vi om dig till ett annat tillfälle.
+            Deltagare från samma arbetsplats, eller med chefsrelation till varandra,
+            går inte samma kurs. Det är en förutsättning för att veckan ska fungera.
+          </div>
+        </details>
+        <details>
+          <summary>Hur får jag min arbetsgivare att säga ja?</summary>
+          <div class="svar">
+            Kortversionen som brukar landa: en chef som förstår gruppdynamik löser
+            konflikter tidigare, håller ihop team längre och behöver färre
+            omtag i rekrytering. Vill du ha ett underlag att skicka vidare, hör av
+            dig, så skriver jag ihop ett som passar er verksamhet.
+          </div>
+        </details>
+        <details>
+          <summary>Vad händer efter kursen?</summary>
+          <div class="svar">
+            Du åker hem med en egen plan, inte med en pärm. Många vill ha stöd att
+            hålla i det, och då kompletterar vi med uppföljning, handledning eller
+            mätning av hur ledarskapet uppfattas av de egna medarbetarna. Det avgör
+            du efteråt, inget krav.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Avslutande CTA ──────────────────────────────────────────────── -->
+  <section class="avslut" id="kontakt">
+    <div class="cirkel" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="kicker pa-morkt"><span class="nr">09</span>Nästa steg</p>
+      <h2>Osäker på om det är rätt vecka för dig?</h2>
+      <p>
+        Det är en rimlig fråga, och den bästa vägen till svar är ett samtal på en
+        halvtimme. Vi går igenom var du står, vad du vill ut av veckan, och om UGL
+        är rätt just nu. Ingen säljpresentation.
+      </p>
+      <div class="knappar">
+        <!-- Assistenten ligger på "/" i den här servern. Byt till rätt URL vid extern publicering. -->
+        <a class="knapp knapp--guld" href="/">Boka ett samtal <span aria-hidden="true">→</span></a>
+        <!-- FYLL I: rätt mejladress -->
+        <a class="knapp knapp--linje" href="mailto:carl-fredrik@ledarskapskultur.se?subject=UGL">Mejla i stället</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap rad">
+    <span>Ledarskapskultur · Carl-Fredrik Zettermark · certifierad UGL-handledare</span>
+    <span><a href="mailto:carl-fredrik@ledarskapskultur.se">carl-fredrik@ledarskapskultur.se</a></span>
+  </div>
+</footer>
+
+<div class="mobilcta">
+  <a class="knapp knapp--guld" href="#datum">Se kursdatum <span aria-hidden="true">→</span></a>
+</div>
+
+<!-- Strukturerad data: hjälper både Google och AI-sökningar att beskriva kursen rätt.
+     FYLL I: pris, datum, ort och URL innan publicering. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "UGL, Utveckling av Grupp och Ledare",
+  "description": "Fem dagars internatutbildning i ledarskap och grupputveckling, utvecklad av Försvarshögskolan. För chefer, projektledare och specialister som leder människor.",
+  "inLanguage": "sv-SE",
+  "provider": {
+    "@type": "Organization",
+    "name": "Ledarskapskultur",
+    "url": "https://ledarskapskultur.se"
+  },
+  "hasCourseInstance": [{
+    "@type": "CourseInstance",
+    "courseMode": "onsite",
+    "courseWorkload": "P5D",
+    "startDate": "2026-03-16",
+    "endDate": "2026-03-20",
+    "location": { "@type": "Place", "name": "Kursgård, Mälardalen" }
+  }]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Måste jag vara chef för att gå UGL?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Nej. UGL handlar om ledarskap i vid mening. Projektledare, specialister, HR och blivande chefer går kursen med lika stor behållning som chefer med personalansvar." } },
+    { "@type": "Question", "name": "Är UGL terapi?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Nej. Det är en utbildning med arbetslivet som ram. Arbetet sker med det som händer i gruppen här och nu, och deltagaren avgör själv vad hen delar med sig av." } },
+    { "@type": "Question", "name": "Vad krävs av mig som deltagare?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Att du är på plats hela veckan och är nyfiken på vad andra ser hos dig. Inga förkunskaper krävs. Kvällarna ingår i programmet." } },
+    { "@type": "Question", "name": "Kan jag gå UGL med en kollega?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Nej. Deltagare från samma arbetsplats, eller med chefsrelation till varandra, går inte samma kurs. Det är en förutsättning för att veckan ska fungera." } }
+  ]
+}
+</script>
+
+<script>
+// Toppmenyn byter till papper när hero har passerat.
+const topp = document.getElementById('topp');
+const troskel = () => Math.min(window.innerHeight * .8, 620);
+const mobilcta = document.querySelector('.mobilcta');
+const uppdateraTopp = () => {
+  const forbi = window.scrollY > troskel();
+  topp.classList.toggle('fast', forbi);
+  mobilcta.classList.toggle('syns', forbi);
+  document.body.classList.toggle('har-cta', forbi);
+};
+uppdateraTopp();
+addEventListener('scroll', uppdateraTopp, { passive: true });
+
+// Diskret inanimering. Stängs av helt vid prefers-reduced-motion.
+const stillsam = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const element = document.querySelectorAll('.in');
+if (stillsam || !('IntersectionObserver' in window)) {
+  element.forEach(el => el.classList.add('syns'));
+} else {
+  const obs = new IntersectionObserver((poster) => {
+    poster.forEach((post, i) => {
+      if (!post.isIntersecting) return;
+      post.target.style.transitionDelay = Math.min(i * 70, 210) + 'ms';
+      post.target.classList.add('syns');
+      obs.unobserve(post.target);
+    });
+  }, { rootMargin: '0px 0px -12% 0px', threshold: .1 });
+  element.forEach(el => obs.observe(el));
+  setTimeout(() => element.forEach(el => el.classList.add('syns')), 4000);
+}
+</script>
+</body>
+</html>
