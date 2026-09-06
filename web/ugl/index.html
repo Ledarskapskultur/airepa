@@ -12,27 +12,32 @@
 <meta property="og:title" content="UGL: hitta ditt eget ledarskap">
 <meta property="og:description" content="Fem dagar som ger dig en bild av dig själv som du inte kan få på jobbet.">
 <meta property="og:url" content="https://ledarskapskultur.se/ugl/">
-<meta name="theme-color" content="#013E37">
+<meta name="theme-color" content="#123D35">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,400;1,500&family=Poppins:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-/* ── Ledarskapskulturs designtokens (varumärkesguide v1.0) ───────────── */
+/* ── Färgpalett ──────────────────────────────────────────────────────
+   Fem grundfärger enligt palettbilden. De tre härledda tonerna
+   (massing-ljus, massing-mork, salvia-mork) är samma kulörer ljusare
+   respektive mörkare, framtagna för att liten text ska klara
+   kontrastkravet: mässing mot papper ger bara 2,4:1 och salvia 2,2:1,
+   vilket är för svagt för brödtext och etiketter. */
 :root{
-  --petrol:#013E37;
-  --petrol-light:#2C4A52;
-  --petrol-tint:#E7EDEC;
-  --gold:#FFEFB3;
-  --coral:#E08075;
-  --ochre:#B9843C;
-  --terracotta:#C2562E;
-  --sage:#6E7F5C;
-  --ink:#1F2A37;
-  --ink2:#5A5348;
-  --paper:#FDF9F0;
-  --hair:#E5DFCE;
+  --petrol:#123D35;        /* mörk yta: hero, avslut, sidfot */
+  --ink:#252A28;           /* brödtext och text på mässing */
+  --paper:#F4F0E7;         /* sidans bakgrund */
+  --massing:#B89A62;       /* accent: knapp, cirkel, linjer */
+  --salvia:#9AAA96;        /* lugn accent */
+
+  --massing-ljus:#CDB584;  /* härledd: liten text på mörk botten (6,0:1) */
+  --massing-mork:#7A6130;  /* härledd: länkar och handling på papper (5,2:1) */
+  --salvia-mork:#5E6B5A;   /* härledd: etiketter på papper (5,0:1) */
+  --salvia-tint:#E6EAE3;   /* härledd: sektionsbakgrund */
+  --ink-svag:#5C5F58;      /* härledd: dämpad brödtext (5,7:1) */
+  --hair:#DDD7C8;          /* hårfin linje */
 
   --serif:'Lora', Georgia, serif;
   --sans:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -71,22 +76,22 @@ a{ color:inherit; }
 /* Etikett/kicker: Poppins versaler, spärrat. Sparsamt. */
 .kicker{
   font-family:var(--label); font-weight:600; font-size:.72rem;
-  letter-spacing:.14em; text-transform:uppercase; color:var(--ochre);
+  letter-spacing:.14em; text-transform:uppercase; color:var(--salvia-mork);
   margin:0 0 1.1rem;
 }
-.kicker.pa-morkt{ color:var(--gold); }
-.kicker .nr{ color:var(--ink2); margin-right:.9em; }
-.kicker.pa-morkt .nr{ color:rgba(255,239,179,.55); }
+.kicker.pa-morkt{ color:var(--massing-ljus); }
+.kicker .nr{ color:var(--ink-svag); margin-right:.9em; }
+.kicker.pa-morkt .nr{ color:rgba(205,181,132,.6); }
 
 /* Sessionstema: exakt tre ord, konkret → abstrakt, under kickern. */
 .tema{ display:flex; flex-wrap:wrap; align-items:center; gap:.7rem; margin:0 0 2.4rem; }
 .tema .ord{
   font-family:var(--label); font-weight:600; font-size:.8rem;
-  letter-spacing:.09em; text-transform:uppercase; color:var(--terracotta);
+  letter-spacing:.09em; text-transform:uppercase; color:var(--massing-mork);
 }
-.tema .pil{ color:var(--ink2); }
-.tema.pa-morkt .ord{ color:var(--gold); }
-.tema.pa-morkt .pil{ color:rgba(255,239,179,.5); }
+.tema .pil{ color:var(--ink-svag); }
+.tema.pa-morkt .ord{ color:var(--massing-ljus); }
+.tema.pa-morkt .pil{ color:rgba(205,181,132,.5); }
 
 /* ── Knappar. Max en knappfärg per vy. ───────────────────────────────── */
 .knapp{
@@ -97,27 +102,27 @@ a{ color:inherit; }
   transition:transform .18s ease, background-color .18s ease, color .18s ease;
 }
 .knapp:hover{ transform:translateY(-2px); }
-.knapp--guld{ background:var(--gold); color:var(--petrol); }
-.knapp--guld:hover{ background:#fff6d2; }
+.knapp--massing{ background:var(--massing); color:var(--ink); }
+.knapp--massing:hover{ background:#C7AC7C; }
 .knapp--linje{ border-color:rgba(253,249,240,.35); color:var(--paper); }
-.knapp--linje:hover{ border-color:var(--gold); color:var(--gold); }
+.knapp--linje:hover{ border-color:var(--massing-ljus); color:var(--massing-ljus); }
 
 /* Textlänk med pil, används i de ljusa sektionerna i stället för knapp. */
 .lank{
   display:inline-flex; align-items:center; gap:.5rem;
   font-family:var(--label); font-weight:600; font-size:.78rem;
   letter-spacing:.1em; text-transform:uppercase;
-  color:var(--terracotta); text-decoration:none;
-  border-bottom:1px solid rgba(194,86,46,.35); padding-bottom:.25rem;
+  color:var(--massing-mork); text-decoration:none;
+  border-bottom:1px solid rgba(122,97,48,.4); padding-bottom:.25rem;
 }
-.lank:hover{ border-bottom-color:var(--terracotta); }
+.lank:hover{ border-bottom-color:var(--massing-mork); }
 .lank .pil{ transition:transform .18s ease; }
 .lank:hover .pil{ transform:translateX(4px); }
 
-:focus-visible{ outline:2px solid var(--terracotta); outline-offset:3px; border-radius:2px; }
+:focus-visible{ outline:2px solid var(--massing-mork); outline-offset:3px; border-radius:2px; }
 .hoppa{
   position:absolute; left:-9999px; top:0; z-index:100;
-  background:var(--gold); color:var(--petrol); padding:1rem 1.5rem;
+  background:var(--massing); color:var(--ink); padding:1rem 1.5rem;
 }
 .hoppa:focus{ left:0; }
 
@@ -140,9 +145,9 @@ a{ color:inherit; }
   letter-spacing:.1em; text-transform:uppercase;
   color:rgba(253,249,240,.8); text-decoration:none;
 }
-.meny a:hover{ color:var(--gold); }
-.topp.fast .meny a{ color:var(--ink2); }
-.topp.fast .meny a:hover{ color:var(--terracotta); }
+.meny a:hover{ color:var(--massing-ljus); }
+.topp.fast .meny a{ color:var(--ink-svag); }
+.topp.fast .meny a:hover{ color:var(--massing-mork); }
 @media (max-width: 860px){ .meny{ display:none; } }
 
 /* ── Hero: petrol som huvudyta, guld som ljuspunkt ───────────────────── */
@@ -155,7 +160,7 @@ a{ color:inherit; }
 }
 .hero .wrap{ width:100%; position:relative; z-index:2; }
 .hero h1{ color:var(--paper); }
-.hero h1 em{ font-style:normal; color:var(--gold); }
+.hero h1 em{ font-style:normal; color:var(--massing); }
 
 .hero-grid{ display:grid; grid-template-columns:minmax(0,1fr); gap:clamp(2.5rem,5vw,4.5rem); }
 @media (max-width: 899px){
@@ -176,7 +181,7 @@ a{ color:inherit; }
 
 .hero-cirkel{
   position:absolute; z-index:1; border-radius:50%;
-  background:var(--gold);
+  background:var(--massing);
   width:clamp(260px, 28vw, 430px); aspect-ratio:1;
   right:clamp(-150px, -6vw, -60px); top:50%; transform:translateY(-52%);
   pointer-events:none;
@@ -196,7 +201,7 @@ a{ color:inherit; }
   font-family:var(--label); font-size:.74rem; font-weight:500;
   letter-spacing:.1em; text-transform:uppercase; color:rgba(253,249,240,.7);
 }
-.hero-fot strong{ color:var(--gold); font-weight:600; }
+.hero-fot strong{ color:var(--massing-ljus); font-weight:600; }
 .hero-knappar{ display:flex; flex-wrap:wrap; gap:.9rem; margin-top:2.4rem; }
 
 /* ── Sektioner ───────────────────────────────────────────────────────── */
@@ -215,17 +220,17 @@ section{ padding-block:var(--luft); }
 .tal{ display:grid; gap:2rem 1.5rem; grid-template-columns:repeat(2, minmax(0,1fr)); margin-top:clamp(3rem,6vw,4.5rem); }
 @media (min-width: 780px){ .tal{ grid-template-columns:repeat(4, minmax(0,1fr)); } }
 .tal .siffra{ font-family:var(--serif); font-size:clamp(2.4rem,4.5vw,3.4rem); line-height:1; color:var(--petrol); }
-.tal .txt{ font-size:.92rem; color:var(--ink2); margin-top:.7rem; max-width:22ch; }
-.tal > div{ border-top:1.5px solid var(--ochre); padding-top:1.1rem; }
+.tal .txt{ font-size:.92rem; color:var(--ink-svag); margin-top:.7rem; max-width:22ch; }
+.tal > div{ border-top:1.5px solid var(--massing); padding-top:1.1rem; }
 
 /* Vinstblock */
 .vinster{ display:grid; gap:clamp(2.2rem,4vw,3.5rem); grid-template-columns:minmax(0,1fr); margin-top:clamp(2.5rem,5vw,4rem); }
 @media (min-width: 820px){ .vinster{ grid-template-columns:repeat(3, minmax(0,1fr)); } }
 .vinst .nr{
   font-family:var(--label); font-size:.72rem; font-weight:600; letter-spacing:.14em;
-  color:var(--terracotta); display:block; margin-bottom:1.1rem;
+  color:var(--massing-mork); display:block; margin-bottom:1.1rem;
 }
-.vinst p{ color:var(--ink2); font-size:.98rem; }
+.vinst p{ color:var(--ink-svag); font-size:.98rem; }
 
 /* Veckans rytm */
 .rytm{ margin-top:clamp(2.5rem,5vw,3.5rem); border-top:1px solid var(--hair); }
@@ -238,21 +243,21 @@ section{ padding-block:var(--luft); }
 }
 .rytm .etikett{
   font-family:var(--label); font-weight:600; font-size:.72rem;
-  letter-spacing:.13em; text-transform:uppercase; color:var(--ochre);
+  letter-spacing:.13em; text-transform:uppercase; color:var(--salvia-mork);
 }
 .rytm h3{ margin:0; }
-.rytm p{ color:var(--ink2); font-size:.98rem; margin:0; }
-.rytm .not{ margin-top:1.6rem; font-size:.9rem; color:var(--ink2); font-style:italic; font-family:var(--serif); }
+.rytm p{ color:var(--ink-svag); font-size:.98rem; margin:0; }
+.rytm .not{ margin-top:1.6rem; font-size:.9rem; color:var(--ink-svag); font-style:italic; font-family:var(--serif); }
 
 /* Citat */
-.citat{ background:var(--petrol-tint); }
+.citat{ background:var(--salvia-tint); }
 .citat blockquote{
   margin:0; font-style:italic; font-weight:500;
   font-size:clamp(1.4rem, 2.9vw, 2.2rem); line-height:1.38; max-width:22ch;
 }
 .citat .vem{
   font-family:var(--label); font-weight:500; font-size:.74rem;
-  letter-spacing:.12em; text-transform:uppercase; color:var(--ink2); margin-top:1.8rem;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--ink-svag); margin-top:1.8rem;
 }
 .citat-grid{ display:grid; gap:clamp(2.5rem,5vw,4rem); grid-template-columns:minmax(0,1fr); }
 @media (min-width: 900px){ .citat-grid{ grid-template-columns:repeat(2, minmax(0,1fr)); } }
@@ -262,7 +267,7 @@ section{ padding-block:var(--luft); }
 @media (min-width: 700px){ .passar{ grid-template-columns:repeat(2, minmax(0,1fr)); column-gap:clamp(2rem,5vw,4rem); } }
 .passar div{ padding-block:1.35rem; border-bottom:1px solid var(--hair); }
 .passar strong{ font-weight:600; color:var(--petrol); display:block; }
-.passar span{ color:var(--ink2); font-size:.95rem; }
+.passar span{ color:var(--ink-svag); font-size:.95rem; }
 
 /* Datum */
 .datum{ margin-top:clamp(2.2rem,5vw,3.2rem); border-top:1.5px solid var(--petrol); }
@@ -275,14 +280,14 @@ section{ padding-block:var(--luft); }
   .datum-rad .status{ text-align:right; }
 }
 .datum-rad .nar{ font-family:var(--serif); font-size:1.2rem; color:var(--petrol); }
-.datum-rad .var{ color:var(--ink2); font-size:.95rem; }
+.datum-rad .var{ color:var(--ink-svag); font-size:.95rem; }
 .datum-rad .lank{ justify-self:start; }
 .datum-rad .status{
   font-family:var(--label); font-weight:600; font-size:.68rem;
-  letter-spacing:.11em; text-transform:uppercase; color:var(--sage);
+  letter-spacing:.11em; text-transform:uppercase; color:var(--ink-svag);
 }
-.datum-rad .status.fatal{ color:var(--terracotta); }
-.datum-not{ margin-top:1.6rem; font-size:.92rem; color:var(--ink2); }
+.datum-rad .status.fatal{ color:var(--massing-mork); }
+.datum-not{ margin-top:1.6rem; font-size:.92rem; color:var(--ink-svag); }
 
 /* Frågor */
 .fragor{ margin-top:clamp(2rem,4vw,3rem); border-top:1px solid var(--hair); max-width:78ch; }
@@ -295,10 +300,10 @@ summary{
 summary::-webkit-details-marker{ display:none; }
 summary::after{
   content:'+'; font-family:var(--sans); font-weight:400; font-size:1.5rem;
-  color:var(--terracotta); line-height:1; transition:transform .2s ease;
+  color:var(--massing-mork); line-height:1; transition:transform .2s ease;
 }
 details[open] summary::after{ content:'–'; }
-details .svar{ padding:0 0 1.7rem; color:var(--ink2); font-size:.99rem; max-width:64ch; }
+details .svar{ padding:0 0 1.7rem; color:var(--ink-svag); font-size:.99rem; max-width:64ch; }
 
 /* Avslutande CTA */
 .avslut{ background:var(--petrol); color:var(--paper); position:relative; overflow:hidden; }
@@ -306,23 +311,23 @@ details .svar{ padding:0 0 1.7rem; color:var(--ink2); font-size:.99rem; max-widt
 .avslut p{ color:rgba(253,249,240,.78); max-width:48ch; }
 .avslut .wrap{ position:relative; z-index:2; }
 .avslut .cirkel{
-  position:absolute; z-index:1; border-radius:50%; background:var(--gold); opacity:.12;
+  position:absolute; z-index:1; border-radius:50%; background:var(--massing); opacity:.16;
   width:clamp(300px,38vw,500px); aspect-ratio:1; right:-9%; top:-42%; pointer-events:none;
 }
 .avslut .knappar{ display:flex; flex-wrap:wrap; gap:.9rem; margin-top:2.4rem; }
 
 /* Sidfot */
-footer{ background:var(--petrol); color:rgba(253,249,240,.65); padding-block:2.5rem; font-size:.85rem; border-top:1px solid rgba(255,239,179,.14); }
+footer{ background:var(--petrol); color:rgba(253,249,240,.65); padding-block:2.5rem; font-size:.85rem; border-top:1px solid rgba(184,154,98,.2); }
 footer .rad{ display:flex; flex-wrap:wrap; gap:.8rem 2rem; justify-content:space-between; align-items:center; }
 footer a{ color:rgba(253,249,240,.65); text-decoration:none; }
-footer a:hover{ color:var(--gold); }
+footer a:hover{ color:var(--massing-ljus); }
 
 /* Fast CTA-list i mobil */
 .mobilcta{
   position:fixed; inset:auto 0 0; z-index:40; display:none;
   transform:translateY(110%); transition:transform .3s ease;
   background:var(--petrol); padding:.7rem var(--gutter) calc(.7rem + env(safe-area-inset-bottom));
-  border-top:1px solid rgba(255,239,179,.2);
+  border-top:1px solid rgba(184,154,98,.28);
 }
 .mobilcta .knapp{ width:100%; justify-content:center; padding-block:.95rem; }
 @media (max-width: 860px){ .mobilcta{ display:block; } .mobilcta.syns{ transform:none; } body.har-cta{ padding-bottom:84px; } }
@@ -377,7 +382,7 @@ footer a:hover{ color:var(--gold); }
         <div class="hero-text">
           <h1>Hitta<br>ditt <em>eget</em><br>ledarskap.</h1>
           <div class="hero-knappar">
-            <a class="knapp knapp--guld" href="#datum">Se kursdatum <span aria-hidden="true">→</span></a>
+            <a class="knapp knapp--massing" href="#datum">Se kursdatum <span aria-hidden="true">→</span></a>
             <a class="knapp knapp--linje" href="#kontakt">Prata med mig först</a>
           </div>
         </div>
@@ -557,7 +562,7 @@ footer a:hover{ color:var(--gold); }
             <div><strong>HR och verksamhetsutvecklare</strong><span>Du bygger kultur åt andra, och behöver förstå den inifrån.</span></div>
             <div><strong>Du som står inför något nytt</strong><span>Ett skifte i karriären, ett större uppdrag, ett vägval.</span></div>
           </div>
-          <p style="margin-top:1.8rem; font-size:.95rem; color:var(--ink2);">
+          <p style="margin-top:1.8rem; font-size:.95rem; color:var(--ink-svag);">
             En sak är viktig: du går aldrig UGL tillsammans med din chef, din
             medarbetare eller en nära kollega. Hela poängen är att gruppen är ny,
             och att ingenting du säger följer med tillbaka till jobbet.
@@ -701,7 +706,7 @@ footer a:hover{ color:var(--gold); }
       </p>
       <div class="knappar">
         <!-- Assistenten ligger på "/" i den här servern. Byt till rätt URL vid extern publicering. -->
-        <a class="knapp knapp--guld" href="/">Boka ett samtal <span aria-hidden="true">→</span></a>
+        <a class="knapp knapp--massing" href="/">Boka ett samtal <span aria-hidden="true">→</span></a>
         <!-- FYLL I: rätt mejladress -->
         <a class="knapp knapp--linje" href="mailto:carl-fredrik@ledarskapskultur.se?subject=UGL">Mejla i stället</a>
       </div>
@@ -717,7 +722,7 @@ footer a:hover{ color:var(--gold); }
 </footer>
 
 <div class="mobilcta">
-  <a class="knapp knapp--guld" href="#datum">Se kursdatum <span aria-hidden="true">→</span></a>
+  <a class="knapp knapp--massing" href="#datum">Se kursdatum <span aria-hidden="true">→</span></a>
 </div>
 
 <!-- Strukturerad data: hjälper både Google och AI-sökningar att beskriva kursen rätt.

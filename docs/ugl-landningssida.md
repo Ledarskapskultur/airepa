@@ -25,16 +25,37 @@ Sök på `FYLL I` i filen. Det gäller:
 Platshållarcitaten är skrivna som exempel på tonläge, inte som riktiga omdömen. De måste
 bytas ut innan sidan går live.
 
-## Designval
+## Färg och form
 
-Varumärkesguiden styr: petrol som hero-yta, guld som enda ljuspunkt och knappfärg på mörk
-botten, papper (`#FDF9F0`) i övriga sektioner, aldrig ren vit. Lora i rubriker, Poppins
-versaler i etiketter och knappar, Inter som brödtext (webbersättning för Carlito).
-Terrakotta används bara för handling (länkar, plus-tecken i frågorna), ockra för etiketter
-och siffror, salvia för status. Max en knappfärg per vy.
+Sidan använder den femfärgspalett som togs fram för sidan:
 
-Sessionstemat `SAMSPEL → INSIKT → LEDARSKAP` sitter under kickern i hero, enligt regeln
-om tre ord från konkret handling till abstrakt resultat.
+| Hex | Roll |
+|---|---|
+| `#123D35` | Mörk yta: hero, avslut, sidfot |
+| `#F4F0E7` | Sidans bakgrund |
+| `#B89A62` | Mässing. Accent: knapp, hero-cirkel, linjer |
+| `#9AAA96` | Salvia. Lugn accent och sektionsbakgrund |
+| `#252A28` | Brödtext, och text på mässingsknappen |
+
+Tre toner är härledda ur paletten, av kontrastskäl: mässing mot papper ger bara 2,4:1 och
+salvia 2,2:1, vilket är för svagt för brödtext och etiketter (kravet är 4,5:1). Därför
+finns `--massing-mork #7A6130` för länkar och handling på ljus botten (5,2:1),
+`--massing-ljus #CDB584` för liten text på mörk botten (6,0:1) och
+`--salvia-mork #5E6B5A` för etiketter på papper (5,0:1). Grundfärgerna används
+oförändrade på ytor och i stora element.
+
+Rollfördelning: mässing är alltid handling eller accent, salvia alltid lugn och
+navigering, petrol alltid avsändare och mörk yta. Max en knappfärg per vy, mässing på
+mörk botten, textlänkar i mörk mässing på ljus botten.
+
+Observera att paletten avviker från hex-koderna i varumärkesguiden (petrol `#013E37`,
+guld `#FFEFB3`, ockra `#B9843C`, salvia `#6E7F5C`, papper `#FDF9F0`). Ska sidan och
+guiden gå ihop behöver en av dem uppdateras.
+
+Typografin följer guiden: Lora i rubriker, Poppins versaler i etiketter och knappar,
+Inter som brödtext (webbersättning för Carlito). Sessionstemat
+`SAMSPEL → INSIKT → LEDARSKAP` sitter under kickern i hero, enligt regeln om tre ord från
+konkret handling till abstrakt resultat.
 
 Ingen ikon på sidan, enligt regeln om att `L`-märket inte läggs på försättsblad som
 standard. Inga foton, eftersom varje foto måste duotone-behandlas först. Vill du ha ett
