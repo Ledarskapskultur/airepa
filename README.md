@@ -71,6 +71,7 @@ prompten versionshanteras här i repot – ändra den där, inte i dashboarden.
 | `web/index.html` | Knappen "Prata med assistenten" |
 | `migrations/001_init.sql` | Tabellerna |
 | `docs/` | Konton, röstval, testprotokoll, telefoni |
+| `phone-assistant/` | Separat Claude Code-skill: Claude ringer Carl-Fredrik via Bland.ai för beslut, se dess README |
 
 ## Bokningsreglerna
 

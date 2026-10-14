@@ -44,3 +44,5 @@ select = ["E", "F", "I", "UP", "B"]
 [tool.ruff.lint.per-file-ignores]
 # Systemprompten är ordagrann text från kravspecen och får inte brytas om.
 "app/assistant_config.py" = ["E501"]
+# Samtalsprompten på svenska läses upp i telefon och bryts inte om.
+"phone-assistant/phone_assistant.py" = ["E501"]
